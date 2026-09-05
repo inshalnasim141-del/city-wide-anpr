@@ -435,15 +435,8 @@ Built for Smart India Hackathon 2026.
 
 This project is developed as part of Smart India Hackathon 2026.
 
-Add an appropriate open-source license here if the project is intended for public reuse.
 
 
-### One important change I'd make before publishing
 
-I **would not put actual demo passwords in the README**. Your repository is public, and you've just configured MongoDB/authentication. Keep credentials only in Vercel/backend environment variables.
-
-Also, I deliberately described the **YOLOv8 → PaddleOCR → Kafka → Re-ID pipeline as the production path**, rather than claiming that the current deployed prototype is doing all of that live. Your SIH document itself distinguishes that production path from the current working prototype. :contentReference[oaicite:1]{index=1}
-
-The README's prototype claims—JWT authentication, 20 seeded cameras, ~800 detections, trajectory reconstruction, blacklist alerts and analytics—are also directly supported by your SIH material. :contentReference[oaicite:2]{index=2}
 
 **One more recommendation:** add 2–3 screenshots/GIFs of your actual deployed dashboard near the top of the README. That will make the GitHub repo look substantially more professional to SIH judges.
