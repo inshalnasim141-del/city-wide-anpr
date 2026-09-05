@@ -1,0 +1,135 @@
+{
+  "project_title": "City-Wide AI ANPR Trajectory Tracking & Urban Traffic Analytics Engine",
+  "app_type": "dashboard",
+  "theme_strategy": {
+    "default_mode": "dark",
+    "mode_toggle_supported": true,
+    "rationale": "Command & control center environments for law enforcement and traffic operators demand high contrast dark mode (#090D16 base) to minimize operator eye fatigue during 24/7 shifts and ensure critical alerts (amber/crimson) pop instantly."
+  },
+  "typography": {
+    "heading_font": "Outfit, sans-serif",
+    "body_font": "Inter, sans-serif",
+    "mono_font": "JetBrains Mono, monospace",
+    "font_imports": [
+      "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+    ],
+    "hierarchy": {
+      "h1_hero_dashboard_title": "text-2xl sm:text-3xl font-bold tracking-tight font-display text-slate-100",
+      "h2_section_heading": "text-xl sm:text-2xl font-semibold tracking-tight text-slate-200",
+      "h3_card_heading": "text-base sm:text-lg font-medium text-slate-200",
+      "body_text": "text-sm leading-relaxed text-slate-300",
+      "mono_data_readout": "font-mono text-xs sm:text-sm tracking-wide text-cyan-400 font-medium"
+    }
+  },
+  "colors": {
+    "archetype": "THE PERFORMANCE PRO / COMMAND CONTROL TACTICAL",
+    "base_dark": {
+      "background": "#090D16",
+      "surface_card": "#111827",
+      "surface_border": "rgba(255, 255, 255, 0.08)",
+      "surface_hover": "#1F2937",
+      "panel_sidebar": "#0D1322"
+    },
+    "accents": {
+      "primary_cyan": "#00F0FF",
+      "amber_warning": "#FFB800",
+      "crimson_alert": "#FF2A55",
+      "emerald_online": "#10B981",
+      "radar_purple": "#A855F7"
+    },
+    "text": {
+      "primary": "#F8FAFC",
+      "secondary": "#94A3B8",
+      "muted": "#64748B"
+    },
+    "status": {
+      "online_camera": "bg-emerald-500/20 text-emerald-400 border-emerald-500/40",
+      "offline_camera": "bg-rose-500/20 text-rose-400 border-rose-500/40",
+      "blacklisted_hit": "bg-red-500/20 text-red-400 border-red-500/50 animate-pulse",
+      "anomalous_speed": "bg-amber-500/20 text-amber-400 border-amber-500/40"
+    }
+  },
+  "layout_strategy": {
+    "dashboard_grid_mode": "High Density Grid (Mode B)",
+    "container_padding": "p-4 sm:p-6 space-y-6",
+    "card_padding": "p-4 sm:p-5",
+    "gap_size": "gap-4 sm:gap-6",
+    "sidebar": "fixed left-0 top-0 h-full w-64 bg-[#0D1322] border-r border-white/10 z-40 hidden md:block",
+    "header": "h-16 border-b border-white/10 bg-[#0D1322]/80 backdrop-blur-md sticky top-0 z-30 px-6 flex items-center justify-between"
+  },
+  "components_and_pages": {
+    "auth_page": {
+      "path": "src/components/auth/LoginPage.js",
+      "description": "Tactical command portal login with role selection (Traffic Operator, Investigator, Urban Planner, System Admin), MFA badge simulation, and system status indicator."
+    },
+    "live_dashboard": {
+      "path": "src/components/dashboard/LiveOperationsDashboard.js",
+      "description": "Real-time ANPR streaming feed, interactive map snippet, KPI widgets (Detections/min, Active Alerts, Camera Uptime, Peak Flow), active alerts panel."
+    },
+    "trajectory_tracker": {
+      "path": "src/components/trajectory/VehicleTrajectoryTracker.js",
+      "description": "Search by license plate or vehicle description, chronological interactive route map with directional arrows, hop-by-hop timeline, dwell time calculator, speed estimation between nodes, PDF/CSV export."
+    },
+    "camera_network_map": {
+      "path": "src/components/cameras/CameraNetworkMap.js",
+      "description": "City-wide Leaflet/Mapbox interactive node network, online/offline status toggle, FOV direction indicators, traffic density heatmap overlay, quick node diagnostic drawer."
+    },
+    "blacklist_alerts": {
+      "path": "src/components/alerts/BlacklistAlertManager.js",
+      "description": "Blacklisted vehicle registry (stolen, wanted, uninsured), real-time alert feed with sound toggle, acknowledge/escalate/close incident workflow, camera snapshot thumbnail viewer."
+    },
+    "detection_feed": {
+      "path": "src/components/detections/DetectionFeed.js",
+      "description": "High-throughput streaming detection table with plate crop preview, OCR confidence badge, camera location link, vehicle make/color classification filters."
+    },
+    "traffic_analytics": {
+      "path": "src/components/analytics/TrafficAnalyticsDashboard.js",
+      "description": "Origin-Destination matrix flows, congestion heatmaps by hour, average speed trends per corridor, vehicle category pie charts using Recharts."
+    },
+    "admin_management": {
+      "path": "src/components/admin/AdminConsole.js",
+      "description": "User role management, camera API key provisioning, AI OCR threshold configuration, immutable audit trail log."
+    }
+  },
+  "motion_and_interactions": {
+    "hover_effects": "transition-all duration-200 hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(0,240,255,0.15)]",
+    "active_state": "active:scale-[0.98]",
+    "live_pulse": "relative before:absolute before:inset-0 before:rounded-full before:animate-ping before:bg-emerald-400/50",
+    "alert_flash": "animate-pulse border-red-500/80 bg-red-950/30"
+  },
+  "image_urls": {
+    "hero_control_room": "https://images.pexels.com/photos/30692441/pexels-photo-30692441.jpeg",
+    "surveillance_monitor_wall": "https://images.pexels.com/photos/30576172/pexels-photo-30576172.jpeg",
+    "urban_night_aerial_traffic": "https://images.unsplash.com/photo-1472146936668-d987bf0a6e38?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwxfHx1cmJhbiUyMG5pZ2h0JTIwdHJhZmZpYyUyMGFlcmlhbCUyMGhpZ2h3YXl8ZW58MHx8fHwxNzg4NDUzOTAyfDA&ixlib=rb-4.1.0&q=85",
+    "highway_time_lapse": "https://images.unsplash.com/photo-1516707577720-8221c3643fa3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwzfHx1cmJhbiUyMG5pZ2h0JTIwdHJhZmZpYyUyMGFlcmlhbCUyMGhpZ2h3YXl8ZW58MHx8fHwxNzg4NDUzOTAyfDA&ixlib=rb-4.1.0&q=85",
+    "anpr_camera_node_1": "https://images.unsplash.com/photo-1581344458079-75cceb07e0bd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwxfHxjaXR5JTIwdHJhZmZpYyUyMHN1cnZlaWxsYW5jZSUyMGNhbWVyYSUyMGNvbnRyb2wlMjByb29tfGVufDB8fHx8MTc4ODQ1Mzg5M3ww&ixlib=rb-4.1.0&q=85",
+    "anpr_camera_node_2": "https://images.unsplash.com/photo-1559659964-7f369983b418?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwzfHxjaXR5JTIwdHJhZmZpYyUyMHN1cnZlaWxsYW5jZSUyMGNhbWVyYSUyMGNvbnRyb2wlMjByb29tfGVufDB8fHx8MTc4ODQ1Mzg5M3ww&ixlib=rb-4.1.0&q=85"
+  },
+  "map_and_gis_guidelines": {
+    "library": "Leaflet / react-leaflet or custom SVG interactive GIS grid",
+    "theme": "Dark Matter / CartoDB Dark map tile style",
+    "markers": "Custom SVG pulse markers with camera status colors (Emerald = Online, Amber = Congested, Red = Alert/Blacklist Hit)",
+    "trajectory_polyline": "Animated dashed SVG cyan polyline `#00F0FF` with glowing glow shadow and directional arrows along vector points."
+  },
+  "testing_attributes": {
+    "rule": "ALL interactive components, buttons, tabs, inputs, modal triggers, and data key values MUST include data-testid with kebab-case naming.",
+    "examples": [
+      "data-testid='login-submit-btn'",
+      "data-testid='role-selector-operator'",
+      "data-testid='trajectory-search-input'",
+      "data-testid='plate-search-btn'",
+      "data-testid='camera-status-filter'",
+      "data-testid='acknowledge-alert-btn'",
+      "data-testid='export-trajectory-csv'",
+      "data-testid='add-blacklist-plate-btn'"
+    ]
+  },
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Build a production-grade React JS application using modern Tailwind CSS and Lucide React icons.",
+    "Ensure dark mode styling is crisp with dark slate panels, cyan border highlights, and dark-tinted glass overlays.",
+    "Never leave blank or non-interactive placeholders; include working mock data generators for live plate reads, map coordinates, and alerts.",
+    "Add toast feedback via sonner when acknowledging alerts, exporting trajectories, or modifying blacklists.",
+    "Maintain strict data-testid attributes on all interactive elements.",
+    "Never default to centered layouts or plain Bootstrap columns; use tactical bento panels, top metric tickers, and tabbed viewports."
+  ]
+}
