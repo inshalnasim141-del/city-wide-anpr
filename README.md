@@ -439,4 +439,6 @@ This project is developed as part of Smart India Hackathon 2026.
 
 
 
-**One more recommendation:** add 2–3 screenshots/GIFs of your actual deployed dashboard near the top of the README. That will make the GitHub repo look substantially more professional to SIH judges.
+<img width="1895" height="878" alt="Screenshot 2026-09-04 065505" src="https://github.com/user-attachments/assets/345b986e-6b4f-4b71-9eab-a4bc1c85ab76" />
+<img width="1905" height="866" alt="Screenshot 2026-09-04 065420" src="https://github.com/user-attachments/assets/b0c68f75-6f3e-4e4d-aff3-db645c1fcf5d" />
+
