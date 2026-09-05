@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "python -m pip install --target api -r api/requirements.txt && npm ci --prefix frontend --include=dev --legacy-peer-deps",
+  "buildCommand": "npm --prefix frontend run build",
+  "functions": {
+    "index.py": {
+      "includeFiles": "frontend/build/**"
+    }
+  }
+}

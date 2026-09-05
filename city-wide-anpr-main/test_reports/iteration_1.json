@@ -1,0 +1,25 @@
+{
+  "summary": "First-pass backend testing of City-Wide ANPR API. All 11 targeted areas verified against public URL. Auth (3 roles, invalid pwd, /me with & without token), cameras, detections (list + plate/camera filters), simulate, trajectory (segment_from_prev + totals), blacklist CRUD with RBAC (403 for operator, 409 duplicate), alerts list + action=acknowledge (status + history), analytics KPIs/hourly (24 buckets)/top-cameras, /api/health, and no _id leakage all confirmed.",
+  "tested_scope": ["backend", "auth", "integration"],
+  "passed": [
+    "GET /api/health -> 200 {status:ok}",
+    "POST /api/auth/login admin/operator/investigator all return 200 + token with correct role",
+    "POST /api/auth/login wrong password -> 401",
+    "GET /api/auth/me with Bearer -> 200 correct user; without token -> 401",
+    "GET /api/cameras -> 20 cameras with id/name/lat/lng/status/zone",
+    "GET /api/detections list + ?plate= filter (all match) + ?camera_id= filter (all match) + limit honored",
+    "POST /api/detections/simulate -> {created:5}, generated blacklist_hit alert successfully",
+    "GET /api/trajectory?plate=<seeded>&hours=24 -> hops[] with segment_from_prev {distance_km,minutes,avg_kph}, hop_count=23, total_distance_km=186.26, first_seen/last_seen",
+    "GET /api/blacklist -> 5 seeded entries",
+    "POST /api/blacklist as operator -> 403; as investigator -> 200; duplicate -> 409",
+    "DELETE /api/blacklist/{plate} as operator -> 403; as admin -> 200 {ok:true}",
+    "GET /api/alerts -> list with blacklist_hit alerts; POST /api/alerts/{id}/action acknowledge -> status=acknowledged, history entry appended with by/at/note",
+    "GET /api/analytics/kpis -> full KPI object; /hourly -> 24 buckets; /top-cameras -> list of {camera_id,name,count}",
+    "No _id leakage across cameras/detections/blacklist/alerts responses"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "100%", "frontend": "not tested (skipped per request)"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}

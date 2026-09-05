@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+    --anpr-bg: #090d16;
+    --anpr-surface: #111827;
+    --anpr-panel: #0d1322;
+    --anpr-border: rgba(255, 255, 255, 0.08);
+    --anpr-cyan: #00f0ff;
+    --anpr-amber: #ffb800;
+    --anpr-crimson: #ff2a55;
+    --anpr-emerald: #10b981;
+}
+
+html,
+body,
+#root {
+    background: var(--anpr-bg);
+    color: #f8fafc;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+
+.font-display {
+    font-family: "Outfit", sans-serif;
+    letter-spacing: -0.01em;
+}
+
+.font-mono-anpr {
+    font-family: "JetBrains Mono", monospace;
+}
+
+/* Tactical grid overlay */
+.tactical-grid {
+    background-image:
+        linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+/* Scanline animation */
+@keyframes scan {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+.scanline::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(0, 240, 255, 0.06),
+        transparent
+    );
+    animation: scan 8s linear infinite;
+    pointer-events: none;
+}
+
+/* Pulse dot */
+.pulse-dot {
+    position: relative;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--anpr-emerald);
+    box-shadow: 0 0 12px var(--anpr-emerald);
+}
+.pulse-dot::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 999px;
+    background: var(--anpr-emerald);
+    opacity: 0.5;
+    animation: pulse-ring 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.7);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+.pulse-dot.red {
+    background: var(--anpr-crimson);
+    box-shadow: 0 0 12px var(--anpr-crimson);
+}
+.pulse-dot.red::after {
+    background: var(--anpr-crimson);
+}
+
+/* Leaflet dark tweaks */
+.leaflet-container {
+    background: #0b1220 !important;
+    font-family: "Inter", sans-serif;
+    border-radius: 12px;
+}
+.leaflet-tile {
+    filter: brightness(0.55) invert(1) contrast(0.9) hue-rotate(190deg)
+        saturate(0.4) brightness(0.8);
+}
+.leaflet-control-attribution {
+    background: rgba(9, 13, 22, 0.7) !important;
+    color: #64748b !important;
+    font-size: 10px !important;
+}
+.leaflet-control-attribution a {
+    color: #94a3b8 !important;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background: #111827 !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: 8px !important;
+}
+
+/* Custom marker */
+.anpr-marker {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: rgba(0, 240, 255, 0.15);
+    border: 2px solid var(--anpr-cyan);
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.55);
+}
+.anpr-marker.offline {
+    background: rgba(148, 163, 184, 0.15);
+    border-color: #64748b;
+    box-shadow: none;
+}
+.anpr-marker.alert {
+    background: rgba(255, 42, 85, 0.2);
+    border-color: var(--anpr-crimson);
+    box-shadow: 0 0 18px rgba(255, 42, 85, 0.7);
+}
+.anpr-marker.hop {
+    width: 14px;
+    height: 14px;
+    background: var(--anpr-cyan);
+    border: 2px solid #071018;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+}
+
+/* Shadcn base variables — dark tuned */
+@layer base {
+    :root {
+        --background: 222 47% 6%;
+        --foreground: 210 40% 98%;
+        --card: 222 40% 10%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222 40% 10%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 187 100% 50%;
+        --primary-foreground: 222 47% 6%;
+        --secondary: 222 30% 15%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 222 30% 15%;
+        --muted-foreground: 215 20% 65%;
+        --accent: 222 30% 15%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 348 100% 58%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 217 20% 20%;
+        --input: 217 20% 20%;
+        --ring: 187 100% 50%;
+        --radius: 0.75rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}

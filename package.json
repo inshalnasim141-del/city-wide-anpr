@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@craco/craco": "^7.1.0",
+    "mongodb": "3.7"
+  }
+}
